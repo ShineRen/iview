@@ -803,6 +803,18 @@
 <template>
     <div>
         <Select
+            v-model="model100"
+            multiple
+            style="width:260px">
+            <Option
+                v-for="item in cityList"
+                :value="item.value"
+                :key="item.value">{{item.label}}</Option>
+        </Select>
+        <Button type="primary" @click="changeData">ChangeData</Button>
+        <br>
+        <br>
+        <Select
             v-model="model1"
             size="small"
             style="width:200px;" >
@@ -913,6 +925,8 @@
                 :value="item.value"
                 :key="item.value">{{item.label}}</Option>
         </Select>
+
+        
     </div>
 </template>
 <script>
@@ -948,12 +962,16 @@ export default {
             model1: '',
             model10: [],
             model11: [],
+            model100: []
         };
     },
     methods: {
         onClear() {
             console.log('onClear');
         },
+        changeData() {
+            this.model100.push('Canberra')
+        }
     },
 };
 </script>
